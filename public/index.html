@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Spin Wheel App</title>
+    <!-- Google Font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css" />
+    <style>
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+body {
+  height: 100vh;
+  background: linear-gradient(135deg, #c3a3f1, #6414e9);
+}
+.wrapper {
+  width: 90%;
+  max-width: 34.37em;
+  max-height: 90vh;
+  background-color: #ffffff;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  padding: 3em;
+  border-radius: 1em;
+  box-shadow: 0 4em 5em rgba(27, 8, 53, 0.2);
+}
+.container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+#wheel {
+  max-height: inherit;
+  width: inherit;
+  top: 0;
+  padding: 0;
+}
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+#spin-btn {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  height: 26%;
+  width: 26%;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 0;
+  background: radial-gradient(#fdcf3b 50%, #d88a40 85%);
+  color: #c66e16;
+  text-transform: uppercase;
+  font-size: 1.8em;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+}
+img {
+  position: absolute;
+  width: 4em;
+  top: 45%;
+  right: -8%;
+}
+#final-value {
+  font-size: 1.5em;
+  text-align: center;
+  margin-top: 1.5em;
+  color: #202020;
+  font-weight: 500;
+}
+@media screen and (max-width: 768px) {
+  .wrapper {
+    font-size: 12px;
+  }
+  img {
+    right: -5%;
+  }
+}
+.blink {
+  animation: blink 1s steps(1, end) infinite;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="container">
+        <canvas id="wheel"></canvas>
+        <button id="spin-btn">Spin</button>
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAACWCAYAAAA8AXHiAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAADJmlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS42LWMwNjcgNzkuMTU3NzQ3LCAyMDE1LzAzLzMwLTIzOjQwOjQyICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtbG5zOnhtcD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDpFRUIzM0VBRDM3NkIxMUU1QkEwRUI3Rjc1Mzg0MEE2RCIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpFRUIzM0VBQzM3NkIxMUU1QkEwRUI3Rjc1Mzg0MEE2RCIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ0MgMjAxNSAoV2luZG93cykiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo0RTI1MTcyMzM3NjkxMUU1ODIyQUQ4MDg3Q0EzNDYyRSIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo0RTI1MTcyNDM3NjkxMUU1ODIyQUQ4MDg3Q0EzNDYyRSIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRG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" alt="spinner-arrow" />
+	  Value of Pi is 	   	
+      </div>
+      <div id="final-value">
+        <p>Spin the site</p>
+      </div>
+	<br>
+	<br>
+	<br>
+	<p>
+	<span class="blink">
+      <div id="continue-message" style="text-align: right;" class="blink">
+      </div>
+	</span>
+	</p>
+    </div>
+    <!-- Chart JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <!-- Chart JS Plugin for displaying text over chart -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/2.1.0/chartjs-plugin-datalabels.min.js"></script>
+    <!-- Script -->
+    <script src="script.js"></script>
+    <script>
+const wheel = document.getElementById("wheel");
+const spinBtn = document.getElementById("spin-btn");
+const finalValue = document.getElementById("final-value");
+const continueMessage = document.getElementById("continue-message");
+//Object that stores values of minimum and maximum angle for a value
+const rotationValues = [
+  { minDegree: 0, maxDegree: 30, value: 2 },
+  { minDegree: 31, maxDegree: 90, value: 1 },
+  { minDegree: 91, maxDegree: 150, value: 6 },
+  { minDegree: 151, maxDegree: 210, value: 5 },
+  { minDegree: 211, maxDegree: 270, value: 4 },
+  { minDegree: 271, maxDegree: 330, value: 3 },
+  { minDegree: 331, maxDegree: 360, value: 2 },
+];
+//Size of each piece
+const data = [16, 16, 16, 16, 16, 16];
+//background color for each piece
+var pieColors = [
+  "#8b35bc",
+  "#b163da",
+  "#8b35bc",
+  "#b163da",
+  "#8b35bc",
+  "#b163da",
+];
+var currentValue=3.14
+//Create chart
+let myChart = new Chart(wheel, {
+  //Plugin for displaying text on pie chart
+  plugins: [ChartDataLabels],
+  //Chart Type Pie
+  type: "pie",
+  data: {
+    //Labels(values which are to be displayed on chart)
+    labels: [1, 2, 3, 4, 5, 6],
+    //Settings for dataset/pie
+    datasets: [
+      {
+        backgroundColor: pieColors,
+        data: data,
+      },
+    ],
+  },
+  options: {
+    //Responsive chart
+    responsive: true,
+    animation: { duration: 0 },
+    plugins: {
+      //hide tooltip and legend
+      tooltip: false,
+      legend: {
+        display: false,
+      },
+      //display labels inside pie chart
+      datalabels: {
+        color: "#ffffff",
+        formatter: (_, context) => context.chart.data.labels[context.dataIndex],
+        font: { size: 24 },
+      },
+    },
+  },
+});
+//display value based on the randomAngle
+const valueGenerator = (angleValue) => {
+  for (let i of rotationValues) {
+    //if the angleValue is between min and max then display it
+    if (angleValue >= i.minDegree && angleValue <= i.maxDegree) {
+      finalValue.innerHTML = `${currentValue}${i.value}`;
+	currentValue=finalValue.innerHTML
+      spinBtn.disabled = false;
+	continueMessage.innerHTML="Keep spinning";
+      break;
+    }
+  }
+};
+
+//Spinner count
+let count = 0;
+//100 rotations for animation and last rotation for result
+let resultValue = 101;
+//Start spinning
+spinBtn.addEventListener("click", () => {
+  spinBtn.disabled = true;
+  //Empty final value
+  finalValue.innerHTML = `<p>Good Luck!</p>`;
+  continueMessage.innerHTML=""
+  //Generate random degrees to stop at
+  let randomDegree = Math.floor(Math.random() * (355 - 0 + 1) + 0);
+  //Interval for rotation animation
+  let rotationInterval = window.setInterval(() => {
+    //Set rotation for piechart
+    /*
+    Initially to make the piechart rotate faster we set resultValue to 101 so it rotates 101 degrees at a time and this reduces by 1 with every count. Eventually on last rotation we rotate by 1 degree at a time.
+    */
+    myChart.options.rotation = myChart.options.rotation + resultValue;
+    //Update chart with new value;
+    myChart.update();
+    //If rotation>360 reset it back to 0
+    if (myChart.options.rotation >= 360) {
+      count += 1;
+      resultValue -= 5;
+      myChart.options.rotation = 0;
+    } else if (count > 15 && myChart.options.rotation == randomDegree) {
+      valueGenerator(randomDegree);
+      clearInterval(rotationInterval);
+      count = 0;
+      resultValue = 101;
+    }
+  }, 10);
+});
+    </script>
+  </body>
+</html>
