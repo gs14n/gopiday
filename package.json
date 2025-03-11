@@ -1,0 +1,29 @@
+{
+  "name": "gopiday",
+  "version": "1.0.0",
+  "description": "This is a web application to compute pi using spin wheel and validate Qodo.ai gen and merge concepts.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gs14n/gopiday.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gs14n/gopiday/issues"
+  },
+  "homepage": "https://github.com/gs14n/gopiday#readme",
+  "dependencies": {
+    "express": "^4.21.2",
+    "express-rate-limit": "^7.5.0",
+    "helmet": "^8.0.0"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}
